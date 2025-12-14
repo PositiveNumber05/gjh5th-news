@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>광장현대5단지 재건축 추진 안내</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Malgun Gothic', '맑은 고딕', 'Nanum Gothic', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        /* 헤더 */
+        .header {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+        
+        .header .date {
+            font-size: 0.95em;
+            opacity: 0.8;
+            margin-top: 20px;
+        }
+        
+        /* 컨텐츠 영역 */
+        .content {
+            padding: 40px;
+        }
+        
+        /* 섹션 공통 스타일 */
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #1e40af;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #2563eb;
+            font-weight: 700;
+        }
+        
+        /* 현황 요약 카드 */
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid #2563eb;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .card h3 {
+            color: #1e40af;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .card ul {
+            list-style: none;
+        }
+        
+        .card li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            font-size: 1.05em;
+        }
+        
+        .card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: bold;
+        }
+        
+        .card .highlight {
+            color: #dc2626;
+            font-weight: 700;
+        }
+        
+        /* 테이블 스타일 (PC용) */
+        .table-container {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        thead {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+        }
+        
+        th {
+            padding: 18px 15px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 1.05em;
+        }
+        
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: top;
+        }
+        
+        tbody tr:nth-child(even) {
+            background: #f9fafb;
+        }
+        
+        tbody tr:hover {
+            background: #eff6ff;
+            transition: background 0.2s;
+        }
+        
+        .stage-number {
+            background: #2563eb;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            display: inline-block;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .current-stage {
+            background: #f59e0b !important;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .duration {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95em;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        /* ------------------------------------------- */
+        /* [New] 모바일 아코디언 스타일 시작 */
+        /* ------------------------------------------- */
+        .mobile-accordion {
+            display: none; /* PC에서는 숨김 */
+        }
+
+        .acc-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .acc-header {
+            padding: 18px 20px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .acc-header-left {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        .acc-stage-num {
+            background: #2563eb;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .acc-stage-num.current {
+            background: #f59e0b;
+            animation: pulse 2s infinite;
+        }
+
+        .acc-title-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .acc-big-stage {
+            font-size: 0.8em;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .acc-title {
+            font-weight: 700;
+            font-size: 1.05em;
+            color: #1e293b;
+        }
+
+        .acc-icon {
+            color: #94a3b8;
+            transition: transform 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .acc-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: #f8fafc;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .acc-content-inner {
+            padding: 20px;
+        }
+
+        .acc-detail-row {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        
+        .acc-detail-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .acc-detail-label {
+            display: block;
+            font-size: 0.85em;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        /* 아코디언 활성화 상태 */
+        .acc-item.active {
+            border-color: #2563eb;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+        }
+        
+        .acc-item.active .acc-header {
+            background: #eff6ff;
+        }
+
+        .acc-item.active .acc-icon {
+            transform: rotate(180deg);
+            color: #2563eb;
+        }
+        
+        /* 배경색 테마 클래스 */
+        .bg-yellow .acc-header { background: #fffbeb; }
+        .bg-yellow.active .acc-header { background: #fef3c7; }
+        .bg-blue .acc-header { background: #eff6ff; }
+        .bg-blue.active .acc-header { background: #dbeafe; }
+
+        /* ------------------------------------------- */
+        /* [New] 모바일 아코디언 스타일 끝 */
+        /* ------------------------------------------- */
+        
+        /* 경고 박스 */
+        .warning-box {
+            background: #fef2f2;
+            border: 2px solid #dc2626;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .warning-box h3 {
+            color: #dc2626;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+        }
+        
+        .warning-box h3:before {
+            content: "⚠️";
+            margin-right: 10px;
+            font-size: 1.3em;
+        }
+        
+        .warning-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #dc2626;
+        }
+        
+        .warning-item h4 {
+            color: #dc2626;
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .warning-item p {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+        
+        .warning-item .reason {
+            color: #7f1d1d;
+            font-style: italic;
+            margin-top: 8px;
+        }
+        
+        /* 성공 박스 */
+        .success-box {
+            background: #f0fdf4;
+            border: 2px solid #16a34a;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .success-box h3 {
+            color: #16a34a;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+        }
+        
+        .success-box h3:before {
+            content: "✅";
+            margin-right: 10px;
+            font-size: 1.3em;
+        }
+        
+        .success-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #16a34a;
+        }
+        
+        .success-item h4 {
+            color: #16a34a;
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        /* 비교 테이블 */
+        .comparison-table {
+            margin: 30px 0;
+        }
+        
+        .comparison-table th {
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+        
+        .comparison-table .negative {
+            color: #dc2626;
+            font-weight: 700;
+        }
+        
+        .comparison-table .positive {
+            color: #16a34a;
+            font-weight: 700;
+        }
+        
+        /* 타임라인 */
+        .timeline {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin: 25px 0;
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: 17px;
+            top: 35px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background: #cbd5e1;
+        }
+        
+        .timeline-item:last-child:before {
+            display: none;
+        }
+        
+        .timeline-year {
+            position: absolute;
+            left: 0;
+            background: #2563eb;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            flex: 1;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .timeline-content h4 {
+            color: #1e40af;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        /* FAQ */
+        .faq-item {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: #f8fafc;
+            padding: 20px;
+            font-weight: 700;
+            font-size: 1.1em;
+            color: #1e40af;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        
+        .faq-question:before {
+            content: "Q";
+            background: #2563eb;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-weight: bold;
+        }
+        
+        .faq-answer {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .faq-answer:before {
+            content: "A";
+            background: #16a34a;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-weight: bold;
+        }
+        
+        /* 푸터 */
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .footer h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .footer p {
+            margin: 8px 0;
+            opacity: 0.9;
+        }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 1.8em; line-height: 1.3; }
+            .header p { font-size: 1em; }
+            .content { padding: 20px; }
+            .section-title { font-size: 1.5em; }
+            .summary-cards { grid-template-columns: 1fr; }
+            
+            /* [수정] 모든 테이블을 숨기는 것이 아니라, 'comparison-table'은 보이게 예외 처리 */
+            .table-container { display: none; }
+            .table-container.comparison-table { display: block; } /* 이 줄이 추가되었습니다! */
+
+            .mobile-accordion { display: block; }
+            
+            .comparison-table table { font-size: 0.85em; }
+            .comparison-table th, .comparison-table td { padding: 10px 5px; text-align: center; }
+        }
+        
+        /* 프린트 스타일 */
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; }
+            .mobile-accordion { display: none; }
+            .table-container { display: block; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏢 광장현대5단지 재건축 추진 안내</h1>
+            <p>소유주 여러분께 드리는 전체 절차 및 일정 안내서</p>
+            <p class="date">📅 작성일: 2025년 12월</p>
+        </div>
+        
+        <div class="content">
+            
+            <section class="section">
+                <h2 class="section-title">📊 현황 요약 (한눈에 보기)</h2>
+                <div class="summary-cards">
+                    <div class="card">
+                        <h3>📍 현재 위치</h3>
+                        <ul>
+                            <li>재건축추진준비위원회 구성 완료</li>
+                            <li>고유번호증 발급 완료</li>
+                            <li>소유주 인증 카카오톡 단톡방 개설</li>
+                            <li class="highlight">→ 다음: 협력업체 선정(도시계획, 건축설계, PM 등) 및 정비계획 입안 준비</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>⏰ 예상 일정</h3>
+                        <ul>
+                            <li>정비구역 지정: <strong>2028년 목표</strong></li>
+                            <li>조합 설립: <strong>2030년</strong></li>
+                            <li>착공: <strong>2033년</strong></li>
+                            <li class="highlight">입주: <strong>2040년</strong> (변동 가능)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>🏘️ 단지 정보</h3>
+                        <ul>
+                            <li>위치: 서울시 광진구 광장동 554-7</li>
+                            <li>용도지역: 제3종일반주거지역</li>
+                            <li>대지면적: 22,142㎡ (약 6,698평)</li>
+                            <li>현황용적률: 234.42%</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">🔄 재건축 전체 절차 (총 10단계)</h2>
+                <p style="margin-bottom: 20px; font-size: 1.05em; color: #64748b;">
+                    💡 아래 절차는 사업 방식(신통기획, 공공재건축 등) 확정에 따라 유동적일 수 있습니다.
+                </p>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 100px;">대단계</th>
+                                <th style="width: 80px;">단계</th>
+                                <th>주요 활동</th>
+                                <th style="width: 120px;">소요 기간</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="1"><strong>준비</strong></td>
+                                <td><span class="stage-number current-stage">0</span></td>
+                                <td>
+                                    <strong>재건축준비위원회 구성</strong><br>
+                                    • 고유번호증 발급 ✓<br>
+                                    • 협력업체(도시계획, 건축설계, PM/입찰공고 등 진행)<br>
+                                    • 소유주 의향서 및 동의서 징구 준비
+                                </td>
+                                <td><span class="duration">1~2년</span></td>
+                            </tr>
+                            
+                            <tr style="background: #fef3c7;">
+                                <td rowspan="4"><strong>정비계획</strong></td>
+                                <td><span class="stage-number">1</span></td>
+                                <td>
+                                    <strong>정비계획 수립 및 입안</strong><br>
+                                    • 정비계획(안) 입안 제안<br>
+                                    • 서울시 가이드라인 검토
+                                </td>
+                                <td><span class="duration">약 1년</span></td>
+                            </tr>
+                            
+                            <tr style="background: #fef3c7;">
+                                <td><span class="stage-number">2</span></td>
+                                <td>
+                                    <strong>주민공람 및 의견 청취</strong><br>
+                                    • 정비계획(안) 30일 주민공람<br>
+                                    • 관계부서 협의<br>
+                                    • 구의회 의견 청취 (60일)
+                                </td>
+                                <td><span class="duration">3~4개월</span></td>
+                            </tr>
+                            
+                            <tr style="background: #fef3c7;">
+                                <td><span class="stage-number">3</span></td>
+                                <td>
+                                    <strong>도시계획위원회 심의</strong><br>
+                                    • 정비계획 심의<br>
+                                    • 서울시 도시계획위원회 통과
+                                </td>
+                                <td><span class="duration">4~6개월</span></td>
+                            </tr>
+                            
+                            <tr style="background: #fef3c7;">
+                                <td><span class="stage-number">4</span></td>
+                                <td>
+                                    <strong>정비구역 지정·고시</strong><br>
+                                    • 서울시장 결정 고시<br>
+                                </td>
+                                <td><span class="duration">1개월</span></td>
+                            </tr>
+                            
+                            <tr style="background: #dbeafe;">
+                                <td rowspan="2"><strong>조합 구성</strong></td>
+                                <td><span class="stage-number">5</span></td>
+                                <td>
+                                    <strong>조합설립추진위원회 승인</strong><br>
+                                    • 토지등소유자 과반수(50%) 동의<br>
+                                    • 구청장 승인 신청<br>
+                                    • 정비사업전문관리업자 선정<br>
+                                    <span style="color:#2563eb; font-weight:bold;">• 조합직접설립 동의(50%)시 생략 가능</span>
+                                </td>
+                                <td><span class="duration">1~2년</span></td>
+                            </tr>
+                            
+                            <tr style="background: #dbeafe;">
+                                <td><span class="stage-number">6</span></td>
+                                <td>
+                                    <strong>조합설립인가</strong><br>
+                                    • 전체 구분소유자 <strong>70%</strong> 동의<br>
+                                    • 각 동별 과반수(50%) 동의<br>
+                                    • 창립총회 개최
+                                </td>
+                                <td><span class="duration">1.5~2.5년</span></td>
+                            </tr>
+                            
+                            <tr>
+                                <td rowspan="3"><strong>사업 진행</strong></td>
+                                <td><span class="stage-number">7</span></td>
+                                <td>
+                                    <strong>사업시행인가</strong><br>
+                                    • 시공사 선정<br>
+                                    • 설계 확정<br>
+                                    • 건축·환경·교통·교육환경평가 등
+                                </td>
+                                <td><span class="duration">1.5~2.5년</span></td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="stage-number">8</span></td>
+                                <td>
+                                    <strong>관리처분인가</strong><br>
+                                    • 감정평가 (권리가액 산정)<br>
+                                    • 일반분양 공고 및 실시
+                                </td>
+                                <td><span class="duration">2~3년</span></td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="stage-number">9</span></td>
+                                <td>
+                                    <strong>착공~준공</strong><br>
+                                    • 이주 및 철거<br>
+                                    • 착공 신고<br>
+                                    • 건축 공사<br>
+                                    • 준공인가 및 입주
+                                </td>
+                                <td><span class="duration">5~8년</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mobile-accordion">
+                    
+                    <div class="acc-item">
+                        <div class="acc-header">
+                            <div class="acc-header-left">
+                                <span class="acc-stage-num current">0</span>
+                                <div class="acc-title-group">
+                                    <span class="acc-big-stage">준비 단계</span>
+                                    <span class="acc-title">재건축준비위원회 구성</span>
+                                </div>
+                            </div>
+                            <div class="acc-icon">▼</div>
+                        </div>
+                        <div class="acc-content">
+                            <div class="acc-content-inner">
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">주요 활동</span>
+                                    • 고유번호증 발급 ✓<br>
+                                    • 협력업체(도시계획, 건축설계, PM/입찰공고 등 진행)<br>
+                                    • 소유주 의향서 및 동의서 징구 준비
+                                </div>
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">소요 기간</span>
+                                    <span class="duration">1~2년</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item bg-yellow">
+                        <div class="acc-header">
+                            <div class="acc-header-left">
+                                <span class="acc-stage-num">1</span>
+                                <div class="acc-title-group">
+                                    <span class="acc-big-stage">정비계획 단계</span>
+                                    <span class="acc-title">정비계획 수립 및 입안</span>
+                                </div>
+                            </div>
+                            <div class="acc-icon">▼</div>
+                        </div>
+                        <div class="acc-content">
+                            <div class="acc-content-inner">
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">주요 활동</span>
+                                    • 정비계획(안) 입안 제안<br>
+                                    • 서울시 가이드라인 검토
+                                </div>
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">소요 기간</span>
+                                    <span class="duration">약 1년</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item bg-yellow">
+                        <div class="acc-header">
+                            <div class="acc-header-left">
+                                <span class="acc-stage-num">2</span>
+                                <div class="acc-title-group">
+                                    <span class="acc-big-stage">정비계획 단계</span>
+                                    <span class="acc-title">주민공람 및 의견 청취</span>
+                                </div>
+                            </div>
+                            <div class="acc-icon">▼</div>
+                        </div>
+                        <div class="acc-content">
+                            <div class="acc-content-inner">
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">주요 활동</span>
+                                    • 정비계획(안) 30일 주민공람<br>
+                                    • 관계부서 협의<br>
+                                    • 구의회 의견 청취 (60일)
+                                </div>
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">소요 기간</span>
+                                    <span class="duration">3~4개월</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item bg-yellow">
+                        <div class="acc-header">
+                            <div class="acc-header-left">
+                                <span class="acc-stage-num">3</span>
+                                <div class="acc-title-group">
+                                    <span class="acc-big-stage">정비계획 단계</span>
+                                    <span class="acc-title">도시계획위원회 심의</span>
+                                </div>
+                            </div>
+                            <div class="acc-icon">▼</div>
+                        </div>
+                        <div class="acc-content">
+                            <div class="acc-content-inner">
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">주요 활동</span>
+                                    • 정비계획 심의<br>
+                                    • 서울시 도시계획위원회 통과
+                                </div>
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">소요 기간</span>
+                                    <span class="duration">4~6개월</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item bg-yellow">
+                        <div class="acc-header">
+                            <div class="acc-header-left">
+                                <span class="acc-stage-num">4</span>
+                                <div class="acc-title-group">
+                                    <span class="acc-big-stage">정비계획 단계</span>
+                                    <span class="acc-title">정비구역 지정·고시</span>
+                                </div>
+                            </div>
+                            <div class="acc-icon">▼</div>
+                        </div>
+                        <div class="acc-content">
+                            <div class="acc-content-inner">
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">주요 활동</span>
+                                    • 서울시장 결정 고시
+                                </div>
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">소요 기간</span>
+                                    <span class="duration">1개월</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item bg-blue">
+                        <div class="acc-header">
+                            <div class="acc-header-left">
+                                <span class="acc-stage-num">5</span>
+                                <div class="acc-title-group">
+                                    <span class="acc-big-stage">조합 구성 단계</span>
+                                    <span class="acc-title">조합설립추진위원회 승인</span>
+                                </div>
+                            </div>
+                            <div class="acc-icon">▼</div>
+                        </div>
+                        <div class="acc-content">
+                            <div class="acc-content-inner">
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">주요 활동</span>
+                                    • 토지등소유자 과반수(50%) 동의<br>
+                                    • 구청장 승인 신청<br>
+                                    • 정비사업전문관리업자 선정<br>
+                                    <span style="color:#2563eb; font-weight:bold;">• 조합직접설립 동의(50%)시 생략 가능</span>
+                                </div>
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">소요 기간</span>
+                                    <span class="duration">1~2년</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item bg-blue">
+                        <div class="acc-header">
+                            <div class="acc-header-left">
+                                <span class="acc-stage-num">6</span>
+                                <div class="acc-title-group">
+                                    <span class="acc-big-stage">조합 구성 단계</span>
+                                    <span class="acc-title">조합설립인가</span>
+                                </div>
+                            </div>
+                            <div class="acc-icon">▼</div>
+                        </div>
+                        <div class="acc-content">
+                            <div class="acc-content-inner">
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">주요 활동</span>
+                                    • 전체 구분소유자 <strong>70%</strong> 동의<br>
+                                    • 각 동별 과반수(50%) 동의<br>
+                                    • 창립총회 개최
+                                </div>
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">소요 기간</span>
+                                    <span class="duration">1.5~2.5년</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item">
+                        <div class="acc-header">
+                            <div class="acc-header-left">
+                                <span class="acc-stage-num">7</span>
+                                <div class="acc-title-group">
+                                    <span class="acc-big-stage">사업 진행 단계</span>
+                                    <span class="acc-title">사업시행인가</span>
+                                </div>
+                            </div>
+                            <div class="acc-icon">▼</div>
+                        </div>
+                        <div class="acc-content">
+                            <div class="acc-content-inner">
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">주요 활동</span>
+                                    • 시공사 선정<br>
+                                    • 설계 확정<br>
+                                    • 건축·환경·교통·교육환경평가 등
+                                </div>
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">소요 기간</span>
+                                    <span class="duration">1.5~2.5년</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item">
+                        <div class="acc-header">
+                            <div class="acc-header-left">
+                                <span class="acc-stage-num">8</span>
+                                <div class="acc-title-group">
+                                    <span class="acc-big-stage">사업 진행 단계</span>
+                                    <span class="acc-title">관리처분인가</span>
+                                </div>
+                            </div>
+                            <div class="acc-icon">▼</div>
+                        </div>
+                        <div class="acc-content">
+                            <div class="acc-content-inner">
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">주요 활동</span>
+                                    • 감정평가 (권리가액 산정)<br>
+                                    • 일반분양 공고 및 실시
+                                </div>
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">소요 기간</span>
+                                    <span class="duration">2~3년</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item">
+                        <div class="acc-header">
+                            <div class="acc-header-left">
+                                <span class="acc-stage-num">9</span>
+                                <div class="acc-title-group">
+                                    <span class="acc-big-stage">사업 진행 단계</span>
+                                    <span class="acc-title">착공~준공</span>
+                                </div>
+                            </div>
+                            <div class="acc-icon">▼</div>
+                        </div>
+                        <div class="acc-content">
+                            <div class="acc-content-inner">
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">주요 활동</span>
+                                    • 이주 및 철거<br>
+                                    • 착공 신고<br>
+                                    • 건축 공사<br>
+                                    • 준공인가 및 입주
+                                </div>
+                                <div class="acc-detail-row">
+                                    <span class="acc-detail-label">소요 기간</span>
+                                    <span class="duration">5~8년</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <p style="margin-top: 20px; padding: 15px; background: #fef3c7; border-radius: 8px; font-size: 1.05em;">
+                    ⚠️ <strong>주의사항:</strong> 위 절차 및 기간은 향후 확정될 사업 방식(공공재건축, 신통기획 등)에 따라 변동될 수 있습니다.
+                </p>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">⚠️ 2025년 제도 개정사항 적용 여부</h2>
+                
+                <div class="warning-box">
+                    <h3>적용 불가 및 유의 사항</h3>
+                    
+                    <div class="warning-item">
+                        <h4>❌ 1. 2025년 재건축 용적률 추가 인센티브</h4>
+                        <p><strong>현 단계 적용 불가</strong></p>
+                        <p class="reason">
+                            → 사유: 본 단지는 전문가 검토 결과, 용적률 추가 인센티브를 받을 수 있는 특별 조건에 해당하지 않습니다.
+                        </p>
+                        <p>
+                            → 현재 용적률: 234.42%<br>
+                            → 사업성 보정계수: 1.055 적용 예상<br>
+                            → 예상 허용용적률: 약 255%
+                        </p>
+                        <p class="note" style="margin-top: 10px; font-weight: bold; color: #5a5a5a;">
+                            ※ 현재 인센티브 적용은 어렵지만, 전문가들과 협력하여 분담금을 낮출 수 있는 다른 방안을 적극적으로 찾고 있습니다.
+                        </p>
+                    </div>
+                    
+                    <div class="warning-item">
+                        <h4>⚠️ 2. 전자동의서 시스템</h4>
+                        <p><strong>신통기획 단계 적용 제한</strong></p>
+                        <p class="reason">
+                            → 사유: 전자동의서 업체 확인 결과, 현재 진행 중인 초기 기획 단계에서는 전자동의서 시스템 적용이 어렵습니다.
+                        </p>
+                        <p class="plan">
+                            → 향후 계획: <strong>단, 이후 조합설립 등 동의서 징구가 필요한 단계에서는 전자동의서 시스템 사용이 가능합니다.</strong>
+                        </p>
+                        <p>
+                            → 영향: 이번 동의서 수집은 부득이하게 서면 방식으로 진행됨을 양해 부탁드립니다.
+                        </p>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 40px; font-size: 1.3em; color: #1e40af; margin-bottom: 15px;">
+                    📋 전자동의서 vs 서면동의서 비교
+                </h3>
+                <div class="table-container comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>전자동의서 (현재 불가)</th>
+                                <th>서면동의서 (본 단지 적용)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>소요 기간</strong></td>
+                                <td class="positive">기간단축 가능(2개월 이상)</td>
+                                <td class="negative">약 6개월 ~ 12개월</td>
+                            </tr>
+                            <tr>
+                                <td><strong>방식</strong></td>
+                                <td>모바일 본인인증</td>
+                                <td>직접 서명 및 수집</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="success-box">
+                    <h3>적용 가능 사항</h3>
+                    
+                    <div class="success-item">
+                        <h4>✅ 1. 조합설립 동의율 완화</h4>
+                        <p><strong>75% → 70%</strong> (2025년 5월 1일 시행)</p>
+                        <p>
+                            → 전체 구분소유자 및 토지면적의 70% 이상 동의로 조합 설립 가능<br>
+                            → 동별 동의율: 과반수(50%) 유지
+                        </p>
+                    </div>
+                    
+                    <div class="success-item">
+                        <h4>✅ 2. 안전진단 선택사항</h4>
+                        <p><strong>준공 30년 이상 단지는 안전진단 생략 가능</strong></p>
+                        <p>
+                            → 본 단지는 1989년 입주로 30년 이상 경과<br>
+                            → 안전진단 없이 사업 추진 가능 (선택사항)<br>
+                            → 단, 사업시행계획인가 전까지 완료 필요
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">📅 예상 타임라인 (2025~2040)</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">25</div>
+                        <div class="timeline-content">
+                            <h4>2025~2027년: 정비계획 수립 및 입안</h4>
+                            <p>• 협력업체 선정 및 기초 조사<br>
+                            • 정비계획(안) 작성 및 주민 제안</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">28</div>
+                        <div class="timeline-content">
+                            <h4>2028년: 정비구역 지정·고시 ⭐</h4>
+                            <p>• 도시계획위원회 심의 통과<br>
+                            • <strong>서울시장 정비구역 지정 고시</strong></p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">29</div>
+                        <div class="timeline-content">
+                            <h4>2029년: 조합설립 추진</h4>
+                            <p>• 추진위원회 구성 (또는 조합직접설립 추진)<br>
+                            • 정비사업전문관리업자 선정</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">30</div>
+                        <div class="timeline-content">
+                            <h4>2030년: 조합설립인가 ⭐</h4>
+                            <p>• 전체 구분소유자 70% 동의<br>
+                                • 각 동별 50% 동의<br>
+                            • <strong>재건축조합 공식 출범</strong></p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">32</div>
+                        <div class="timeline-content">
+                            <h4>2031~2032년: 사업시행인가</h4>
+                            <p>• 시공사 선정 (입찰)<br>
+                            • 설계 확정<br>
+                            • 각종 영향평가 및 건축심의</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">33</div>
+                        <div class="timeline-content">
+                            <h4>2033년: 관리처분인가 & 이주 및 철거 & 착공</h4>
+                            <p>• 감정평가 완료<br>
+                            • 이주 및 철거 시작</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">40</div>
+                        <div class="timeline-content">
+                            <h4>2040년: 준공 및 입주 🎉</h4>
+                            <p>• 건축 공사 완료<br>
+                            • 준공인가<br>
+                            • <strong>신규 아파트 입주 시작</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">❓ 자주 묻는 질문 (FAQ)</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">사업 방식은 신통기획으로 확정된 것인가요?</div>
+                    <div class="faq-answer">
+                        아직 확정되지 않았습니다. 현재는 신통기획뿐만 아니라 공공재건축(대행방식) 등 우리 단지에 가장 유리한 사업 방식을 다각도로 검토 중입니다. 협력업체 선정 후 전문가들의 분석을 통해 최적의 방안을 결정할 예정입니다.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">왜 전자동의서를 지금 사용할 수 없나요?</div>
+                    <div class="faq-answer">
+                        현재 진행 중인 초기 단계(신통기획 신청 또는 정비계획 입안 제안)에서는 전자동의서 시스템의 기술적/제도적 연동이 어렵습니다. 하지만 향후 조합설립인가를 위한 동의서 징구 단계에서는 전자동의서를 적극 도입하여 주민 편의를 높일 계획입니다.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">조합설립에 필요한 동의율은 얼마인가요?</div>
+                    <div class="faq-answer">
+                        2025년 5월 1일부터 시행된 개정법에 따라 <strong>전체 구분소유자의 70% 이상</strong> 동의가 필요합니다. 
+                        (기존 75%에서 완화) 또한 <strong>각 동별로 과반수(50%) 이상</strong> 동의를 받아야 합니다.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">분담금은 언제 확정되나요?</div>
+                    <div class="faq-answer">
+                        분담금은 <strong>(최종)변경관리처분인가 단계</strong>에서 최종 확정됩니다. 
+                        이 단계에서 감정평가를 통해 권리가액이 산정되고, 각 조합원별 분담금이 결정되며,  <strong>통상 준공 1~2년 전 확정</strong>됩니다..
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">📢 소유주 여러분께</h2>
+                <div style="background: #f0f9ff; padding: 30px; border-radius: 12px; border: 2px solid #2563eb;">
+                    <p style="font-size: 1.1em; line-height: 2; margin-bottom: 15px;">
+                        재건축은 긴 시간이 소요되는 대형 프로젝트입니다. 
+                        빠른 진행도 중요하지만, 단지의 특성에 맞는 최적의 사업 방식을 찾는 것이 무엇보다 중요합니다.
+                    </p>
+                    <p style="font-size: 1.1em; line-height: 2; margin-bottom: 15px;">
+                        현재 준비위원회는 <strong>협력업체 선정</strong>을 준비하고 있습니다. 
+                        공공재건축, 신통기획 등 모든 가능성을 열어두고 검토하여 
+                        소유주 여러분의 이익을 극대화할 수 있는 방향으로 나아가겠습니다.
+                    </p>
+                    <p style="font-size: 1.15em; line-height: 2; font-weight: 700; color: #1e40af; margin-top: 25px;">
+                        💬 소유주 여러분의 적극적인 관심과 참여를 부탁드립니다!
+                    </p>
+                </div>
+            </section>
+            
+        </div>
+        
+        <div class="footer">
+            <h3>📞 문의 및 연락처</h3>
+            <p>광장현대5단지 재건축추진준비위원회</p>
+            <p>
+                소유주 인증 
+                <a href="네이버카페URL" target="https://cafe.naver.com/gwangjang5" style="color: white; text-decoration: underline;">네이버 카페</a> / 
+                <a href="카카오톡오픈채팅URL" target="https://open.kakao.com/o/gcaKPq1h" style="color: white; text-decoration: underline;">카카오톡 단톡방</a>: 
+                지속적인 안내 및 공지 예정
+            </p>
+            <p style="margin-top: 20px; opacity: 0.8; font-size: 0.95em;">
+                본 자료는 2025년 12월 기준으로 작성되었으며, 향후 사업 방식 결정 및 법령 개정에 따라 내용이 변경될 수 있습니다.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // FAQ 토글 기능
+        const questions = document.querySelectorAll('.faq-question');
+        
+        questions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isVisible = answer.style.display === 'block';
+                
+                // 다른 열린 답변들 닫기 (선택사항)
+                // document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+                
+                // 현재 답변 토글
+                answer.style.display = isVisible ? 'none' : 'block';
+                
+                // 답변 초기 상태 설정 (CSS에서 none으로 설정되어 있으므로 필요 시)
+                if (!isVisible) {
+                    answer.style.display = 'block';
+                } else {
+                    answer.style.display = 'none';
+                }
+            });
+        });
+
+        // 초기 로드 시 모든 답변 숨김
+        document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+
+        // -----------------------------------------------------------
+        // [New] 모바일 아코디언 기능 스크립트
+        // -----------------------------------------------------------
+        const accHeaders = document.querySelectorAll('.acc-header');
+
+        accHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const content = item.querySelector('.acc-content');
+                
+                // 'active' 클래스 토글
+                item.classList.toggle('active');
+
+                // 높이 애니메이션 처리
+                if (item.classList.contains('active')) {
+                    // 펼치기: 내부 높이만큼 설정
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    // 접기: 높이 0
+                    content.style.maxHeight = "0";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
